@@ -19,5 +19,5 @@ app.use('/students', student);
 
 
 app.listen(port, () => {
-    console.log('Server is up and running on port number ' + port);
+    console.log('Server is running on ' + port);
 });
