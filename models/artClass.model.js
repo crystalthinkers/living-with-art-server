@@ -8,7 +8,7 @@ let ArtClassSchema = new Schema({
     },
     classVideoLink: {type: String, required: false},
     classDescription:{type: String, required: true, max: 500},
-    status:{type: Boolean, required: false},
+    status:{type: Boolean,default:true,required: false},
 });
 
 //Export the model

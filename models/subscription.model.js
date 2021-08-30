@@ -8,7 +8,7 @@ let SubscriptionSchema = new Schema({
     },
     paymentStatus:{type: Boolean, required: false},
     transactionId: {type: String, required: false},
-    startDate:{
+    expiryDate:{
         type: Date,
       },
     approveStatus:{type: Boolean, required: false},

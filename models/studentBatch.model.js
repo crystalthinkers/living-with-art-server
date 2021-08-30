@@ -19,7 +19,7 @@ let StudentBatchSchema = new Schema({
     pricing: {
         type: String,
       },
-    status:{type: Boolean, required: false},
+    status:{type: Boolean,default:true, required: false},
 });
 
 //Export the model
