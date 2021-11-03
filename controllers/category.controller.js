@@ -1,9 +1,14 @@
 const Category = require('../models/category.model');
 
-exports.cateegory_create = function (req, res) {
+exports.category_create = function (req, res) {
     let category = new Category(
         {
             categoryName: req.body.categoryName,
+            teacherName: req.body.teacherName,
+            teacherDescription:req.body.teacherDescription,
+            videoLink:req.body.videoLink,
+            sessions:req.body.sessions,
+            status:true
         }
     );
     category.save(function (err) {
@@ -15,6 +20,13 @@ exports.cateegory_create = function (req, res) {
 };
 exports.category_details = function (req, res) {
     category.findById(req.params.id, function (err, category) {
+        if (err) return next(err);
+        res.send(category);
+    })
+};
+
+exports.allCategories = function (req, res) {
+    category.find({}, function (err, category) {
         if (err) return next(err);
         res.send(category);
     })
