@@ -1,18 +1,33 @@
 const Student = require('../models/student.model');
 const StudentBatch = require('../models/studentBatch.model');
-
+const mongoUtil = require('../mongoUtil.js');
+const localdata = require('../localdata.json');
+var fs = require('fs');
 exports.student_create = function (req, res) {
+    var firstName = req.body.first_name;
+    var phoneNumber = req.body.phone;
+    // let rawdata = fs.readFileSync('localdata.json');
+    // let currentData= JSON.parse(rawdata);
+    // currentData.data.push({"phone":phoneNumber,"message":firstName});
+    let data = [{"phone":phoneNumber,"message":firstName}];
+   // fs.writeFileSync('localdata.json', data);
+    mongoUtil.sendMessage(data);
+   
     let student = new Student(
         {
-            studentName: req.body.studentName,
-            phoneNumber: req.body.phoneNumber,
-            address:req.body.address
+            fName: req.body.first_name,
+            lName: req.body.last_name,
+            phone:req.body.phone,
+            email:req.body.email,
+            categoryId:req.body.category_Id,
+            payment_status:false
         }
     );
     student.save(function (err) {
         if (err) {
             return next(err);
         }
+        
         res.send('Student Created successfully')
     })
 };

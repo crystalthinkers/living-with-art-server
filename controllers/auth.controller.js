@@ -162,6 +162,21 @@ exports.send_message = function (req, res) {
   .then(message => console.log(message));
 };
 
+exports.checkMessage = async function (req, res) {
+  const { Client } = require('whatsapp-web.js');
+  const client = new Client();
+  
+  client.on('qr', (qr) => {
+      console.log('QR RECEIVED111', qr);
+  });
+  
+  client.on('ready', () => {
+      console.log('Client is ready!');
+  });
+  
+  client.initialize();
+};
+
 exports.authenticateToken = async function (req, res,next) {
   
     // Gather the jwt access token from the request header

@@ -9,7 +9,7 @@ const subscription = require('./routes/subscription.route');
 const app = express()
 const port = 3000
 const bodyParser = require('body-parser');
-
+mongoUtil.connectWhatsapp();
 app.use(express.json()); 
 app.use(express.urlencoded());
 app.use('/auth', auth);
